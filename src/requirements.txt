@@ -1,0 +1,10 @@
+fastapi==0.111.0 
+sqlalchemy==2.0.31
+flake8
+pytest
+black
+isort
+mypy
+uvicorn
+mangum
+psycopg2-binary
