@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db-postgresql:
+    image: postgres:latest
+    container_name: db-postgresql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dental_lab_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
+    driver: local
