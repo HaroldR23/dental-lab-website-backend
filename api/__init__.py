@@ -3,7 +3,7 @@ from typing import AsyncGenerator
 
 from fastapi import FastAPI
 
-from adapters.repositories.sql.config_db import SQLConnection, SessionManager
+from adapters.src.repositories.sql.config_db import SQLConnection, SessionManager
 
 from .routers.index import index_router
 
