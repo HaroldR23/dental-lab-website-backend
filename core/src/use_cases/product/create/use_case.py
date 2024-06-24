@@ -9,4 +9,17 @@ class CreateProduct:
         self.product_repository = product_repository
 
     def __call__(self, request: CreateProductRequest) -> CreateProductResponse:
-        raise NotImplementedError
+        try:
+            current_product = self.product_repository.get_by_name(request.name)
+
+            if current_product:
+                raise ProductAlreadyExistsException(name=request.name)
+
+            product = self.product_repository.create(request)
+
+            return CreateProductResponse(
+                name=product.name,
+            )
+
+        except ProductRepositoryException as e:
+            raise ProductBusinessException(str(e))
