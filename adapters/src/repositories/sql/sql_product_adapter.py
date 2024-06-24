@@ -10,7 +10,25 @@ class SQLProductRepository(ProductRepository):
         self.session = session
 
     def create(self, product: Product):
-        raise NotImplementedError
+        try:
+            product_to_create = ProductRecord(
+                name=product.name,
+                price=product.price,
+                img_url=product.img_url
+            )
+            with self.session as session:
+                self.session.add(product_to_create)
+                id = product_to_create.id
+                self.session.commit()
+                return Product(
+                    **{
+                        "id": id,
+                        **product._asdict()
+                    }
+                )
+        except Exception as e:
+            self.session.rollback()
+            raise ProductRepositoryException(method="create")
 
     def get_by_name(self, product_name: str):
         raise NotImplementedError
