@@ -18,7 +18,7 @@ def product_creation_use_case(memory_product_repository: ProductRepository) -> C
 @pytest.fixture
 def product_creation_request():
     return CreateProductRequest(
-        image_url="https://www.test.com/image.jpg",
+        img_url="https://www.test.com/image.jpg",
         name="Product 1",
         price=10.0
     )
