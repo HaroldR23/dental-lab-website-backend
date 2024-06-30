@@ -1,6 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
+from core.src.models.product import Product
 from main import create_app
 
 
@@ -14,3 +15,13 @@ def client():
 @pytest.fixture
 def mock_product_payload():
     return {"name": "Product 1", "img_url": "Product 1 description", "price": 10.0}
+
+
+@pytest.fixture
+def mock_products():
+    return [
+        Product(
+            name=f"Product {i}", img_url=f"http://url_img_{i}.png", price=10.0, id=i
+        )
+        for i in range(1, 4)
+    ]

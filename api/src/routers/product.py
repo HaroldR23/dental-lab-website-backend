@@ -24,4 +24,9 @@ async def create_product(product: Product):
         raise HTTPException(status_code=500, detail={"message": str(e)})
 
 
+@product_router.get("/products")
+async def get_all_products():
+    raise NotImplementedError
+
+
 index_router.include_router(product_router)
