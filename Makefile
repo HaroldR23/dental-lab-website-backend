@@ -24,7 +24,3 @@ format:
 	echo Run flake8...; flake8 .;
 	echo Run mypy...; mypy .;
 
-lint:
-	flake8
-	black --check .
-	isort --check-only .

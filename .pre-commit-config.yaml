@@ -46,10 +46,3 @@ repos:
         language: system
         pass_filenames: false
 
-      - id: flake8
-        name: flake8
-        stages: [commit]
-        language: system
-        entry: flake8 .
-        types: [python]
-        exclude: .github,.venv,__pycache__,__init__.py,.mypy_cache,.pytest_cache
