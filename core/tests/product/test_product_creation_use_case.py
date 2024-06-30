@@ -6,7 +6,8 @@ from adapters.src.exceptions.repository.product import \
     ProductRepositoryException
 from adapters.src.repositories.memory.memory_product_repository import \
     MemoryProductRepository
-from core.src.exceptions.business.product import ProductAlreadyExistsException, ProductBusinessException
+from core.src.exceptions.business.product import (
+    ProductAlreadyExistsException, ProductBusinessException)
 from core.src.use_cases.product.create import CreateProductResponse
 
 
