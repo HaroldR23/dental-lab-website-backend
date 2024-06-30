@@ -1,7 +1,8 @@
-from typing import NamedTuple
+from typing import NamedTuple, Optional
+
 
 class Product(NamedTuple):
-    id: str
     name: str
     price: float
     img_url: str
+    id: Optional[str] = None
