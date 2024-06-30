@@ -21,5 +21,5 @@ class MemoryProductRepository(ProductRepository):
                 product_to_return = None
         return product_to_return
 
-    def list(self) -> List[Product]:
+    def get_all(self) -> List[Product]:
         return self.products

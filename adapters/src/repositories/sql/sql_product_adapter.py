@@ -19,7 +19,6 @@ class SQLProductRepository(ProductRepository):
                 name=product.name, price=product.price, img_url=product.img_url
             )
             self.session.add(product_to_create)
-            # self.session.flush()
             id = str(product_to_create.id)
             self.session.commit()
             return Product(
@@ -47,5 +46,5 @@ class SQLProductRepository(ProductRepository):
         except Exception:
             raise ProductRepositoryException(method="get_by_name")
 
-    def list(self):
+    def get_all(self):
         raise NotImplementedError
