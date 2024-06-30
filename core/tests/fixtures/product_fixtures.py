@@ -4,7 +4,7 @@ from adapters.src.repositories.memory.memory_product_repository import \
     MemoryProductRepository
 from core.src.use_cases.product.create import (CreateProduct,
                                                CreateProductRequest)
-from core.src.use_cases.product.get_all import GetAllProducts
+from core.src.use_cases.product.get_all.use_case import GetAllProducts
 
 
 @pytest.fixture
