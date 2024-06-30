@@ -47,4 +47,16 @@ class SQLProductRepository(ProductRepository):
             raise ProductRepositoryException(method="get_by_name")
 
     def get_all(self):
-        raise NotImplementedError
+        try:
+            products = self.session.query(ProductRecord).all()
+            return [
+                Product(
+                    id=str(product.id),
+                    name=str(product.name),
+                    price=float(product.price),
+                    img_url=str(product.img_url),
+                )
+                for product in products
+            ]
+        except Exception:
+            raise ProductRepositoryException(method="get_all")
