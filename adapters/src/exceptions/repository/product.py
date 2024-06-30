@@ -1,4 +1,5 @@
-from .base import RepositoryException
+from adapters.src.exceptions import RepositoryException
+
 
 class ProductRepositoryException(RepositoryException):
     def __init__(self, method: str):

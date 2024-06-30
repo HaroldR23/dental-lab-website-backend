@@ -1,0 +1,29 @@
+name:  Dental Lab Web CI
+
+on: 
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Set up Python 3.11
+              uses: actions/setup-python@v4
+              with:
+                  python-version: '3.11'
+
+            - name: Install dependencies
+              run: |
+                  make install_requirements
+
+            - name: Run linters
+              run: |
+                  source .venv/bin/activate && make lint
+                
+            - name: Run tests
+              run: |
+                  source .venv/bin/activate && make test

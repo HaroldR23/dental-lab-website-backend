@@ -3,10 +3,11 @@ from typing import AsyncGenerator
 
 from fastapi import FastAPI
 
-from adapters.src.repositories.sql.config_db import SQLConnection, SessionManager
-
+from adapters.src.repositories.sql.config_db import (SessionManager,
+                                                     SQLConnection)
 from api.src.routers.index import index_router
 from api.src.routers.product import product_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator:
