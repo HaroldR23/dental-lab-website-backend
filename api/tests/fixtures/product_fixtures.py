@@ -21,7 +21,10 @@ def mock_product_payload():
 def mock_products():
     return [
         Product(
-            name=f"Product {i}", img_url=f"http://url_img_{i}.png", price=10.0, id=i
+            name=f"Product {i}",
+            img_url=f"http://url_img_{i}.png",
+            price=10.0,
+            id=str(i),
         )
         for i in range(1, 4)
     ]
