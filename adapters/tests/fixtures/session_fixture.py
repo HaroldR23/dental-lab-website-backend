@@ -38,7 +38,7 @@ def mock_query_all_return_empty_session() -> MagicMock:
 
 
 @pytest.fixture
-def mock_query_all_products_session() -> MagicMock:
+def mock_query_all_session() -> MagicMock:
     mock_query_session = MagicMock(spec=Session)
     mock_query_session.query().all().return_value = [
         MagicMock(),

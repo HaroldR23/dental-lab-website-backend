@@ -5,12 +5,10 @@ from core.src.models.product import Product
 
 
 def test_get_all_products_should_return_a_list_of_products(
-    mock_query_all_products_session: Session,
+    mock_query_all_session: Session,
 ):
     # Arrange
-    sql_product_repository = SQLProductRepository(
-        session=mock_query_all_products_session
-    )
+    sql_product_repository = SQLProductRepository(session=mock_query_all_session)
     # Act
     products = sql_product_repository.get_all()
     # Assert
