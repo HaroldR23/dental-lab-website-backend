@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 
 from adapters.src.exceptions.repository.appointment import \
     AppointmentRepositoryException
@@ -36,7 +36,22 @@ class SQLAppointmentRepository(AppointmentRepository):
             raise AppointmentRepositoryException(method="create")
 
     def get_all(self):
-        raise NotImplementedError
+        try:
+            appointments: List[AppointmentRecord] = self.session.query(
+                AppointmentRecord
+            ).all()
+            return [
+                Appointment(
+                    id=str(appointment.id),
+                    date=str(appointment.date),
+                    time=str(appointment.time),
+                    patient_name=str(appointment.patient_name),
+                    patient_email=str(appointment.patient_email),
+                )
+                for appointment in appointments
+            ]
+        except Exception:
+            raise AppointmentRepositoryException(method="get_all")
 
     def get_by_date_and_time(self, date: str, time: str):
         try:
