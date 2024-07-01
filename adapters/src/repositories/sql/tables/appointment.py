@@ -12,4 +12,4 @@ class AppointmentRecord(Base):
     date = Column(String(255))
     time = Column(String(255))
     patient_name = Column(String(255))
-    patiene_email = Column(String(255))
+    patient_email = Column(String(255))

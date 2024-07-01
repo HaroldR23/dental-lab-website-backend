@@ -1,4 +1,4 @@
-from typing import NamedTuple
+from typing import NamedTuple, Optional
 
 
 class Appointment(NamedTuple):
@@ -6,3 +6,4 @@ class Appointment(NamedTuple):
     time: str
     patient_name: str
     patient_email: str
+    id: Optional[str] = None
