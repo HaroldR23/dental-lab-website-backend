@@ -1,5 +1,7 @@
 import pytest
 
+from core.src.models.appointment import Appointment
+
 
 @pytest.fixture
 def mock_appointment_payload():
@@ -9,3 +11,17 @@ def mock_appointment_payload():
         "time": "10:00",
         "patient_email": "patient@mail.com",
     }
+
+
+@pytest.fixture
+def mock_appointments():
+    return [
+        Appointment(
+            id=str(i),
+            date=f"2022-01-0{i}",
+            time=f"10:0{1}",
+            patient_name=f"Patient {i}",
+            patient_email=f"email@{i}.com",
+        )
+        for i in range(1, 4)
+    ]

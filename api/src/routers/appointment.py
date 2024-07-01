@@ -24,4 +24,9 @@ async def create_appointment(appointment: Appointment):
         raise HTTPException(status_code=500, detail={"message": str(e)})
 
 
+@appointment_router.get("/appointments", tags=["appointments"])
+async def get_all_appointments():
+    raise NotImplementedError
+
+
 index_router.include_router(appointment_router)
