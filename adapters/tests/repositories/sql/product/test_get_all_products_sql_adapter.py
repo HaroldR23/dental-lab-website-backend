@@ -1,3 +1,7 @@
+import pytest
+
+from adapters.src.exceptions.repository.product import \
+    ProductRepositoryException
 from adapters.src.repositories.sql.config_db.session_manager import Session
 from adapters.src.repositories.sql.sql_product_adapter import \
     SQLProductRepository
@@ -26,3 +30,14 @@ def test_get_all_products_should_return_empty_list_when_no_products(
     products = sql_product_repository.get_all()
     # Assert
     assert len(products) == 0
+
+
+def test_get_all_products_should_raise_exception_when_error_occurs(
+    mock_bad_query_session: Session,
+):
+    # Arrange
+    sql_product_repository = SQLProductRepository(session=mock_bad_query_session)
+    error_message = "Something went wrong trying to get_all the Product"
+    # Act and Assert
+    with pytest.raises(ProductRepositoryException, match=error_message):
+        sql_product_repository.get_all()
