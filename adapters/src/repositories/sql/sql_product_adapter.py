@@ -19,7 +19,6 @@ class SQLProductRepository(ProductRepository):
                 name=product.name, price=product.price, img_url=product.img_url
             )
             self.session.add(product_to_create)
-            # self.session.flush()
             id = str(product_to_create.id)
             self.session.commit()
             return Product(
@@ -47,5 +46,17 @@ class SQLProductRepository(ProductRepository):
         except Exception:
             raise ProductRepositoryException(method="get_by_name")
 
-    def list(self):
-        raise NotImplementedError
+    def get_all(self):
+        try:
+            products = self.session.query(ProductRecord).all()
+            return [
+                Product(
+                    id=str(product.id),
+                    name=str(product.name),
+                    price=float(product.price),
+                    img_url=str(product.img_url),
+                )
+                for product in products
+            ]
+        except Exception:
+            raise ProductRepositoryException(method="get_all")

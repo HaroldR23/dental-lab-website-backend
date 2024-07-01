@@ -28,3 +28,21 @@ def mock_bad_query_session() -> MagicMock:
     mock_bad_query_session = MagicMock(spec=Session)
     mock_bad_query_session.query.side_effect = Exception
     return mock_bad_query_session
+
+
+@pytest.fixture
+def mock_query_all_return_empty_session() -> MagicMock:
+    mock_query_session = MagicMock(spec=Session)
+    mock_query_session.query().all().return_value = []
+    return mock_query_session
+
+
+@pytest.fixture
+def mock_query_all_products_session() -> MagicMock:
+    mock_query_session = MagicMock(spec=Session)
+    mock_query_session.query().all().return_value = [
+        MagicMock(),
+        MagicMock(),
+        MagicMock(),
+    ]
+    return mock_query_session

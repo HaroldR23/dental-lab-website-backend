@@ -2,7 +2,8 @@ from fastapi import APIRouter, HTTPException
 
 from api.src.dtos.product_dto import Product
 from core.src.use_cases.product.create.request import CreateProductRequest
-from factories.use_cases.product import create_product_use_case
+from factories.use_cases.product import (create_product_use_case,
+                                         get_all_products_use_case)
 
 from .index import index_router
 
@@ -20,6 +21,17 @@ async def create_product(product: Product):
         use_case = create_product_use_case()
         response_use_case = use_case(request=request)
         return response_use_case
+    except Exception as e:
+        raise HTTPException(status_code=500, detail={"message": str(e)})
+
+
+@product_router.get("/products")
+async def get_all_products():
+    try:
+        use_case = get_all_products_use_case()
+        response_use_case = use_case()
+        products = response_use_case.products
+        return [product._asdict() for product in products] if len(products) > 0 else []
     except Exception as e:
         raise HTTPException(status_code=500, detail={"message": str(e)})
 
