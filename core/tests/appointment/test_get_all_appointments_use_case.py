@@ -42,7 +42,7 @@ def test_get_all_appointments_raise_an_exception_when_something_went_wrong(
     get_all_appointments_use_case: GetAllAppointments,
 ):
     # Arrange
-    error_msg = "Something went wrong trying to get_all the appointment."
+    error_msg = "Something went wrong trying to get_all the Appointment"
 
     # Act
     with patch.object(
