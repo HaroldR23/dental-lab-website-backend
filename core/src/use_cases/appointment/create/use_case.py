@@ -26,9 +26,6 @@ class CreateAppointment:
             appointment = self.appointment_repository.create(appointment=appointment)
 
             return CreateAppointmentResponse(
-                date=appointment.date,
-                time=appointment.time,
-                patient_email=appointment.patient_email,
                 patient_name=appointment.patient_name,
             )
 
