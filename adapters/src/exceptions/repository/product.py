@@ -1,4 +1,4 @@
-from adapters.src.exceptions import RepositoryException
+from adapters.src.exceptions.repository.base import RepositoryException
 
 
 class ProductRepositoryException(RepositoryException):
