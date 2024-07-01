@@ -10,7 +10,7 @@ from .index import index_router
 product_router = APIRouter()
 
 
-@product_router.post("/products")
+@product_router.post("/products", tags=["products"])
 async def create_product(product: Product):
     try:
         request = CreateProductRequest(
@@ -25,7 +25,7 @@ async def create_product(product: Product):
         raise HTTPException(status_code=500, detail={"message": str(e)})
 
 
-@product_router.get("/products")
+@product_router.get("/products", tags=["products"])
 async def get_all_products():
     try:
         use_case = get_all_products_use_case()
