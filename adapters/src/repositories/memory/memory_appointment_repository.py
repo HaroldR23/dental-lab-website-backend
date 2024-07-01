@@ -22,4 +22,4 @@ class MemoryAppointmentRepository(AppointmentRepository):
         return appointment_to_return
 
     def get_all(self) -> List[Appointment]:
-        raise NotImplementedError
+        return self.appointments
