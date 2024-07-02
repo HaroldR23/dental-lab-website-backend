@@ -1,7 +1,7 @@
-from core.src.repository.email_repository import EmailRepository
+from core.src.repository.email_sender_repository import EmailSenderRepository
 
 
-class MemoryEmailRepository(EmailRepository):
+class MemoryEmailSenderRepository(EmailSenderRepository):
     def __init__(self):
         pass
 

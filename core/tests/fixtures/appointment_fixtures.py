@@ -2,8 +2,8 @@ import pytest
 
 from adapters.src.repositories.memory.memory_appointment_repository import \
     MemoryAppointmentRepository
-from adapters.src.repositories.memory.memory_email_repository import \
-    MemoryEmailRepository
+from adapters.src.repositories.memory.memory_email_sender_repository import \
+    MemoryEmailSenderRepository
 from core.src.use_cases.appointment.create import (CreateAppointment,
                                                    CreateAppointmentRequest)
 from core.src.use_cases.appointment.get_all import GetAllAppointments
@@ -18,19 +18,21 @@ def memory_appointment_repository() -> MemoryAppointmentRepository:
 
 
 @pytest.fixture
-def memory_email_repository() -> MemoryEmailRepository:
-    memory_email_repository: MemoryEmailRepository = MemoryEmailRepository()
-    return memory_email_repository
+def memory_email_sender_repository() -> MemoryEmailSenderRepository:
+    memory_email_sender_repository: MemoryEmailSenderRepository = (
+        MemoryEmailSenderRepository()
+    )
+    return memory_email_sender_repository
 
 
 @pytest.fixture
 def appointment_creation_use_case(
     memory_appointment_repository: MemoryAppointmentRepository,
-    memory_email_repository: MemoryEmailRepository,
+    memory_email_sender_repository: MemoryEmailSenderRepository,
 ) -> CreateAppointment:
     appointment_creation_use_case: CreateAppointment = CreateAppointment(
         appointment_repository=memory_appointment_repository,
-        email_repository=memory_email_repository,
+        email_sender_repository=memory_email_sender_repository,
     )
     return appointment_creation_use_case
 

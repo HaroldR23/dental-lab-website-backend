@@ -1,7 +1,7 @@
-from adapters.src.repositories.memory.memory_email_repository import \
-    MemoryEmailRepository
-from core.src.repository.email_repository import EmailRepository
+from adapters.src.repositories.memory.memory_email_sender_repository import \
+    MemoryEmailSenderRepository
+from core.src.repository.email_sender_repository import EmailSenderRepository
 
 
-def email_repository() -> EmailRepository:
-    return MemoryEmailRepository()
+def email_sender_repository() -> EmailSenderRepository:
+    return MemoryEmailSenderRepository()

@@ -4,11 +4,12 @@ import pytest
 
 from adapters.src.exceptions.repository.appointment import \
     AppointmentRepositoryException
-from adapters.src.exceptions.repository.email import EmailRepositoryException
+from adapters.src.exceptions.repository.email_sender import \
+    EmailSenderRepositoryException
 from adapters.src.repositories.memory.memory_appointment_repository import \
     MemoryAppointmentRepository
-from adapters.src.repositories.memory.memory_email_repository import \
-    MemoryEmailRepository
+from adapters.src.repositories.memory.memory_email_sender_repository import \
+    MemoryEmailSenderRepository
 from core.src.exceptions.business.appointment import \
     AppointmentAlreadyExistsException
 from core.src.use_cases.appointment.create import (CreateAppointment,
@@ -75,9 +76,9 @@ def test_create_appointment_should_raise_an_exception_when_something_went_wrong_
 
     # Act
     with patch.object(
-        MemoryEmailRepository,
+        MemoryEmailSenderRepository,
         "send_email_notifications",
-        side_effect=EmailRepositoryException(method="send"),
+        side_effect=EmailSenderRepositoryException(method="send"),
     ):
         with pytest.raises(Exception) as exc_info:
             appointment_creation_use_case(request=appointment_creation_request)
