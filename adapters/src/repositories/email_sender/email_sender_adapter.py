@@ -1,6 +1,7 @@
 import smtplib
 import ssl
 
+import settings.env_variables as env_variables
 from adapters.src.exceptions.repository.email_sender import \
     EmailSenderRepositoryException
 from adapters.src.repositories.email_sender.mail_templates import (
@@ -17,11 +18,11 @@ class SMTPEmailSenderRepository(EmailSenderRepository):
         patient_email: str,
         patient_number: str,
     ):
-        port = 465
-        smtp_server = "smtp.gmail.com"
-        sender_email = "email@gmail.com"
+        port = int(env_variables.SMTP_PORT)
+        smtp_server = str(env_variables.SMTP_SERVER)
+        sender_email = str(env_variables.SENDER_EMAIL)
+        password = str(env_variables.SENDER_PASSWORD)
         receiver_email = patient_email
-        password = "password"
 
         mail_to_client = client_mail_template(
             date=date, time=time, patient_name=patient_name
