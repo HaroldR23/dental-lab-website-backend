@@ -35,6 +35,8 @@ class CreateAppointment:
                 patient_name=appointment.patient_name,
                 date=appointment.date,
                 time=appointment.time,
+                patient_email=appointment.patient_email,
+                patient_number="1234567890",  # TODO: add this attribute to the all the necessary places
             )
 
             return CreateAppointmentResponse(

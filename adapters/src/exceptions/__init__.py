@@ -1,3 +1,4 @@
 from .repository.appointment import AppointmentRepositoryException
 from .repository.base import RepositoryException
+from .repository.email_sender import EmailSenderRepositoryException
 from .repository.product import ProductRepositoryException
