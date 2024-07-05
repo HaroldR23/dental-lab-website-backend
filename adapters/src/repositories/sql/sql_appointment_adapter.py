@@ -1,7 +1,6 @@
 from typing import List, Optional
 
-from adapters.src.exceptions.repository.appointment import \
-    AppointmentRepositoryException
+from adapters.src.exceptions import AppointmentRepositoryException
 from core.src.models.appointment import Appointment
 from core.src.repository.appointment_repository import AppointmentRepository
 

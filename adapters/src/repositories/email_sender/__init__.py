@@ -1,0 +1,1 @@
+from .email_sender_adapter import SMTPEmailSenderRepository

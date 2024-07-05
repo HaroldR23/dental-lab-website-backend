@@ -1,10 +1,7 @@
 import pytest
 
-from adapters.src.exceptions.repository.product import \
-    ProductRepositoryException
-from adapters.src.repositories.sql.config_db.session_manager import Session
-from adapters.src.repositories.sql.sql_product_adapter import \
-    SQLProductRepository
+from adapters.src.exceptions import ProductRepositoryException
+from adapters.src.repositories.sql import Session, SQLProductRepository
 from core.src.models.product import Product
 
 

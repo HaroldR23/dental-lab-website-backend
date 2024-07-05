@@ -1,10 +1,7 @@
 import pytest
 
-from adapters.src.exceptions.repository.appointment import \
-    AppointmentRepositoryException
-from adapters.src.repositories.sql.config_db.session_manager import Session
-from adapters.src.repositories.sql.sql_appointment_adapter import \
-    SQLAppointmentRepository
+from adapters.src.exceptions import AppointmentRepositoryException
+from adapters.src.repositories.sql import Session, SQLAppointmentRepository
 from core.src.models.appointment import Appointment
 
 
