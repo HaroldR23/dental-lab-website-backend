@@ -1,7 +1,6 @@
 from typing import Optional
 
-from adapters.src.exceptions.repository.product import \
-    ProductRepositoryException
+from adapters.src.exceptions import ProductRepositoryException
 from core.src.models.product import Product
 from core.src.repository.product_repository import ProductRepository
 
