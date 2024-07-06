@@ -1,0 +1,3 @@
+from .appointment_repository import AppointmentRepository
+from .email_sender_repository import EmailSenderRepository
+from .product_repository import ProductRepository

@@ -2,13 +2,11 @@ from unittest.mock import patch
 
 import pytest
 
-from adapters.src.exceptions.repository.product import \
-    ProductRepositoryException
-from adapters.src.repositories.memory.memory_product_repository import \
-    MemoryProductRepository
-from core.src.exceptions.business.product import (
-    ProductAlreadyExistsException, ProductBusinessException)
-from core.src.use_cases.product.create import CreateProductResponse
+from adapters.src.exceptions import ProductRepositoryException
+from adapters.src.repositories import MemoryProductRepository
+from core.src.exceptions.business import (ProductAlreadyExistsException,
+                                          ProductBusinessException)
+from core.src.use_cases import CreateProductResponse
 
 
 def test_create_product_should_return_the_product_as_response(

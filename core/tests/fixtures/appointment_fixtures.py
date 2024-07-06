@@ -1,12 +1,9 @@
 import pytest
 
-from adapters.src.repositories.memory.memory_appointment_repository import \
-    MemoryAppointmentRepository
-from adapters.src.repositories.memory.memory_email_sender_repository import \
-    MemoryEmailSenderRepository
-from core.src.use_cases.appointment.create import (CreateAppointment,
-                                                   CreateAppointmentRequest)
-from core.src.use_cases.appointment.get_all import GetAllAppointments
+from adapters.src.repositories import (MemoryAppointmentRepository,
+                                       MemoryEmailSenderRepository)
+from core.src.use_cases import (CreateAppointment, CreateAppointmentRequest,
+                                GetAllAppointments)
 
 
 @pytest.fixture

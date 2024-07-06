@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-from core.src.models.appointment import Appointment
+from core.src.models import Appointment
 
 
 class AppointmentRepository(ABC):

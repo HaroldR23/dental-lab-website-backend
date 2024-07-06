@@ -1,4 +1,4 @@
-from core.src.repository.email_sender_repository import EmailSenderRepository
+from core.src.repository import EmailSenderRepository
 
 
 class MemoryEmailSenderRepository(EmailSenderRepository):
