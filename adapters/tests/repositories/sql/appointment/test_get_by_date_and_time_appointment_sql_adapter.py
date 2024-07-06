@@ -1,7 +1,8 @@
 import pytest
+from sqlalchemy.orm import Session
 
 from adapters.src.exceptions import AppointmentRepositoryException
-from adapters.src.repositories.sql import Session, SQLAppointmentRepository
+from adapters.src.repositories.sql import SQLAppointmentRepository
 from core.src.models.appointment import Appointment
 
 
