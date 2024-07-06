@@ -1,7 +1,8 @@
 import pytest
+from sqlalchemy.orm import Session
 
 from adapters.src.exceptions import ProductRepositoryException
-from adapters.src.repositories.sql import Session, SQLProductRepository
+from adapters.src.repositories.sql import SQLProductRepository
 from core.src.models.product import Product
 
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-from api.src.dtos.product_dto import Product
+from api.src.dtos import Product
 from core.src.use_cases.product.create.request import CreateProductRequest
 from factories.use_cases.product import (create_product_use_case,
                                          get_all_products_use_case)
