@@ -2,15 +2,11 @@ from unittest.mock import patch
 
 import pytest
 
-from adapters.src.exceptions.repository.appointment import \
-    AppointmentRepositoryException
-from adapters.src.repositories.memory.memory_appointment_repository import \
-    MemoryAppointmentRepository
-from core.src.exceptions.business.appointment import \
-    AppointmentBusinessException
-from core.src.models.appointment import Appointment
-from core.src.use_cases.appointment.get_all import (GetAllAppointments,
-                                                    GetAllAppointmentsResponse)
+from adapters.src.exceptions import AppointmentRepositoryException
+from adapters.src.repositories import MemoryAppointmentRepository
+from core.src.exceptions.business import AppointmentBusinessException
+from core.src.models import Appointment
+from core.src.use_cases import GetAllAppointments, GetAllAppointmentsResponse
 
 
 def test_get_all_appointments_return_a_list_of_appointments(

@@ -2,14 +2,12 @@ from unittest.mock import patch
 
 import pytest
 
-from adapters.src.exceptions.repository.product import \
-    ProductRepositoryException
-from adapters.src.repositories.memory.memory_product_repository import \
-    MemoryProductRepository
-from core.src.exceptions.business.product import ProductBusinessException
-from core.src.models.product import Product
-from core.src.use_cases.product import CreateProduct, GetAllProducts
-from core.src.use_cases.product.create.request import CreateProductRequest
+from adapters.src.exceptions import ProductRepositoryException
+from adapters.src.repositories import MemoryProductRepository
+from core.src.exceptions.business import ProductBusinessException
+from core.src.models import Product
+from core.src.use_cases import (CreateProduct, CreateProductRequest,
+                                GetAllProducts)
 
 
 def test_get_all_products_should_return_a_list_of_products(

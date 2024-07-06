@@ -1,7 +1,7 @@
 from typing import List, Optional
 
-from core.src.models.product import Product
-from core.src.repository.product_repository import ProductRepository
+from core.src.models import Product
+from core.src.repository import ProductRepository
 
 
 class MemoryProductRepository(ProductRepository):

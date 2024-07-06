@@ -2,11 +2,10 @@ import smtplib
 import ssl
 
 import settings.env_variables as env_variables
-from adapters.src.exceptions.repository.email_sender import \
-    EmailSenderRepositoryException
+from adapters.src.exceptions import EmailSenderRepositoryException
 from adapters.src.repositories.email_sender.mail_templates import (
     client_mail_template, lab_mail_template)
-from core.src.repository.email_sender_repository import EmailSenderRepository
+from core.src.repository import EmailSenderRepository
 
 
 class SMTPEmailSenderRepository(EmailSenderRepository):

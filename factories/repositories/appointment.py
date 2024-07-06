@@ -1,6 +1,5 @@
-from adapters.src.repositories.sql.config_db import SessionManager
-from adapters.src.repositories.sql.sql_appointment_adapter import \
-    SQLAppointmentRepository
+from adapters.src.repositories.sql import (SessionManager,
+                                           SQLAppointmentRepository)
 
 
 def sql_appointment_repository() -> SQLAppointmentRepository:

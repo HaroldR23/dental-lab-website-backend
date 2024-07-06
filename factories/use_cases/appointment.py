@@ -1,7 +1,6 @@
-from core.src.use_cases.appointment import (CreateAppointment,
-                                            GetAllAppointments)
-from factories.repositories.appointment import sql_appointment_repository
-from factories.repositories.email_sender import email_sender_repository
+from core.src.use_cases import CreateAppointment, GetAllAppointments
+from factories.repositories import (email_sender_repository,
+                                    sql_appointment_repository)
 
 
 def create_appointment_use_case() -> CreateAppointment:

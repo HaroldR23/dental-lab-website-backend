@@ -1,8 +1,8 @@
 from typing import List, Optional
 
 from adapters.src.exceptions import AppointmentRepositoryException
-from core.src.models.appointment import Appointment
-from core.src.repository.appointment_repository import AppointmentRepository
+from core.src.models import Appointment
+from core.src.repository import AppointmentRepository
 
 from .config_db.session_manager import Session
 from .tables.appointment import AppointmentRecord

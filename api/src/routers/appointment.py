@@ -1,10 +1,11 @@
 from fastapi import APIRouter, HTTPException
 
 from api.src.dtos import Appointment
-from api.src.routers.index import index_router
-from core.src.use_cases.appointment.create import CreateAppointmentRequest
+from core.src.use_cases.appointment import CreateAppointmentRequest
 from factories.use_cases.appointment import (create_appointment_use_case,
                                              get_all_appointments_use_case)
+
+from .index import index_router
 
 appointment_router = APIRouter()
 

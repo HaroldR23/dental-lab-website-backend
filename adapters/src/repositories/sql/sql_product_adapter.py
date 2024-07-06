@@ -1,8 +1,8 @@
 from typing import Optional
 
 from adapters.src.exceptions import ProductRepositoryException
-from core.src.models.product import Product
-from core.src.repository.product_repository import ProductRepository
+from core.src.models import Product
+from core.src.repository import ProductRepository
 
 from .config_db.session_manager import Session
 from .tables.product import ProductRecord

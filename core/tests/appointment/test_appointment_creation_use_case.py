@@ -2,19 +2,13 @@ from unittest.mock import patch
 
 import pytest
 
-from adapters.src.exceptions.repository.appointment import \
-    AppointmentRepositoryException
-from adapters.src.exceptions.repository.email_sender import \
-    EmailSenderRepositoryException
-from adapters.src.repositories.memory.memory_appointment_repository import \
-    MemoryAppointmentRepository
-from adapters.src.repositories.memory.memory_email_sender_repository import \
-    MemoryEmailSenderRepository
-from core.src.exceptions.business.appointment import \
-    AppointmentAlreadyExistsException
-from core.src.use_cases.appointment.create import (CreateAppointment,
-                                                   CreateAppointmentRequest,
-                                                   CreateAppointmentResponse)
+from adapters.src.exceptions import (AppointmentRepositoryException,
+                                     EmailSenderRepositoryException)
+from adapters.src.repositories import (MemoryAppointmentRepository,
+                                       MemoryEmailSenderRepository)
+from core.src.exceptions.business import AppointmentAlreadyExistsException
+from core.src.use_cases import (CreateAppointment, CreateAppointmentRequest,
+                                CreateAppointmentResponse)
 
 
 def test_create_appointment_successfully(

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-from core.src.models.product import Product
+from core.src.models import Product
 
 
 class ProductRepository(ABC):

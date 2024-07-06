@@ -1,6 +1,4 @@
-from adapters.src.repositories.sql.config_db import SessionManager
-from adapters.src.repositories.sql.sql_product_adapter import \
-    SQLProductRepository
+from adapters.src.repositories.sql import SessionManager, SQLProductRepository
 
 
 def sql_product_repository() -> SQLProductRepository:

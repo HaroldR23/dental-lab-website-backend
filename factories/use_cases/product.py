@@ -1,5 +1,5 @@
-from core.src.use_cases.product import CreateProduct, GetAllProducts
-from factories.repositories.product import sql_product_repository
+from core.src.use_cases import CreateProduct, GetAllProducts
+from factories.repositories import sql_product_repository
 
 
 def create_product_use_case() -> CreateProduct:
