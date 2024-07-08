@@ -1,7 +1,7 @@
 from typing import Optional
 
 from adapters.src.exceptions import ProductRepositoryException
-from core.src.models import Product
+from core.src.models import Product, ProductPrice
 from core.src.repository import ProductRepository
 
 from .config_db.session_manager import Session
@@ -15,13 +15,15 @@ class SQLProductRepository(ProductRepository):
     def create(self, product: Product):
         try:
             product_to_create = ProductRecord(
-                name=product.name, price=product.price, img_url=product.img_url
+                name=product.name,
+                prices=[price._asdict() for price in product.prices],
+                img_url=product.img_url,
             )
             self.session.add(product_to_create)
             id = str(product_to_create.id)
             self.session.commit()
             return Product(
-                id=id, name=product.name, price=product.price, img_url=product.img_url
+                id=id, name=product.name, prices=product.prices, img_url=product.img_url
             )
         except Exception:
             self.session.rollback()
@@ -34,11 +36,17 @@ class SQLProductRepository(ProductRepository):
                 .filter(ProductRecord.name == product_name)
                 .first()
             )
+
             if product:
                 return Product(
                     id=str(product.id),
                     name=str(product.name),
-                    price=float(product.price),
+                    prices=[
+                        ProductPrice(
+                            description=price["description"], value=price["value"]
+                        )
+                        for price in list(product.prices)
+                    ],
                     img_url=str(product.img_url),
                 )
             return None
@@ -48,14 +56,21 @@ class SQLProductRepository(ProductRepository):
     def get_all(self):
         try:
             products = self.session.query(ProductRecord).all()
+            print(products[0].prices)
             return [
                 Product(
                     id=str(product.id),
                     name=str(product.name),
-                    price=float(product.price),
+                    prices=[
+                        ProductPrice(
+                            description=price["description"], value=price["value"]
+                        )
+                        for price in list(product.prices)
+                    ],
                     img_url=str(product.img_url),
                 )
                 for product in products
             ]
-        except Exception:
+        except Exception as e:
+            print(e)
             raise ProductRepositoryException(method="get_all")

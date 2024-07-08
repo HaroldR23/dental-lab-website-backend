@@ -1,7 +1,9 @@
-from typing import NamedTuple
+from typing import List, NamedTuple
+
+from core.src.models.product import ProductPrice
 
 
 class CreateProductRequest(NamedTuple):
     name: str
-    price: float
+    prices: List[ProductPrice]
     img_url: str

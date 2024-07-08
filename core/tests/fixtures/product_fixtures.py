@@ -34,5 +34,5 @@ def get_all_products_use_case(
 @pytest.fixture
 def product_creation_request():
     return CreateProductRequest(
-        img_url="https://www.test.com/image.jpg", name="Product 1", price=10.0
+        img_url="https://www.test.com/image.jpg", name="Product 1", prices=[]
     )
