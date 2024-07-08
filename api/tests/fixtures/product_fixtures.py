@@ -14,7 +14,7 @@ def client():
 
 @pytest.fixture
 def mock_product_payload():
-    return {"name": "Product 1", "img_url": "Product 1 description", "price": 10.0}
+    return {"name": "Product 1", "img_url": "Product 1 description", "prices": []}
 
 
 @pytest.fixture
@@ -23,7 +23,7 @@ def mock_products():
         Product(
             name=f"Product {i}",
             img_url=f"http://url_img_{i}.png",
-            price=10.0,
+            prices=[],
             id=str(i),
         )
         for i in range(1, 4)

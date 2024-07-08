@@ -5,7 +5,7 @@ import pytest
 from adapters.src.exceptions import ProductRepositoryException
 from adapters.src.repositories import MemoryProductRepository
 from core.src.exceptions.business import ProductBusinessException
-from core.src.models import Product
+from core.src.models import Product, ProductPrice
 from core.src.use_cases import (CreateProduct, CreateProductRequest,
                                 GetAllProducts)
 
@@ -14,15 +14,33 @@ def test_get_all_products_should_return_a_list_of_products(
     product_creation_use_case: CreateProduct, get_all_products_use_case: GetAllProducts
 ):
     # Arrange
-    product1 = Product(name="Product 1", price=10, img_url="http://test.url")
-    product2 = Product(name="Product 2", price=20, img_url="http://test.url")
-    product3 = Product(name="Product 3", price=30, img_url="http://test.url")
+    product1 = Product(
+        name="Product 1",
+        prices=[
+            ProductPrice(description=f"Description {i}", value=i) for i in range(1, 2)
+        ],
+        img_url="http://test.url",
+    )
+    product2 = Product(
+        name="Product 2",
+        prices=[
+            ProductPrice(description=f"Description {i}", value=i) for i in range(1, 3)
+        ],
+        img_url="http://test.url",
+    )
+    product3 = Product(
+        name="Product 3",
+        prices=[
+            ProductPrice(description=f"Description {i}", value=i) for i in range(1)
+        ],
+        img_url="http://test.url",
+    )
     products = [product1, product2, product3]
 
     for product in products:
         product_creation_use_case(
             request=CreateProductRequest(
-                img_url=product.img_url, name=product.name, price=product.price
+                img_url=product.img_url, name=product.name, prices=product.prices
             )
         )
 

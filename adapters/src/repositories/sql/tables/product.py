@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, Float, String
+from sqlalchemy import JSON, Column, String
 
 from .base import Base
 
@@ -10,5 +10,5 @@ class ProductRecord(Base):
 
     id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
     name = Column(String(255))
-    price = Column(Float)
+    prices = Column(JSON)
     img_url = Column(String(255))

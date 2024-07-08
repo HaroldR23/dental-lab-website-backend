@@ -50,7 +50,7 @@ def test_get_all_products_should_return_a_list_of_products(
             {
                 "name": product.name,
                 "img_url": product.img_url,
-                "price": product.price,
+                "prices": product.prices,
                 "id": product.id,
             }
             for product in mock_products

@@ -1,8 +1,13 @@
-from typing import NamedTuple, Optional
+from typing import List, NamedTuple, Optional
+
+
+class ProductPrice(NamedTuple):
+    value: float
+    description: str
 
 
 class Product(NamedTuple):
     name: str
-    price: float
+    prices: List[ProductPrice]
     img_url: str
     id: Optional[str] = None
