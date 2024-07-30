@@ -6,3 +6,4 @@ class Appointment(BaseModel):
     time: str
     patient_name: str
     patient_email: str
+    patient_phone: str

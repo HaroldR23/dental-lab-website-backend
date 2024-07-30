@@ -10,5 +10,6 @@ def mock_appointment():
         time="10:00",
         patient_name="John Doe",
         patient_email="john@mail.com",
+        patient_phone="123456789",
     )
     return appointment

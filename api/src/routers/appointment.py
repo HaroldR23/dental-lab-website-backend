@@ -18,6 +18,7 @@ async def create_appointment(appointment: Appointment):
             time=appointment.time,
             patient_name=appointment.patient_name,
             patient_email=appointment.patient_email,
+            patient_phone=appointment.patient_phone,
         )
         use_case = create_appointment_use_case()
         response_use_case = use_case(request=request)

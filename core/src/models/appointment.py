@@ -6,4 +6,5 @@ class Appointment(NamedTuple):
     time: str
     patient_name: str
     patient_email: str
+    patient_phone: str
     id: Optional[str] = None

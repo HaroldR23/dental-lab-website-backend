@@ -60,6 +60,7 @@ def test_get_all_appointments_should_return_a_list_of_appointments(
                 "patient_name": appointment.patient_name,
                 "patient_email": appointment.patient_email,
                 "id": appointment.id,
+                "patient_phone": appointment.patient_phone,
             }
             for appointment in mock_appointments
         ]
