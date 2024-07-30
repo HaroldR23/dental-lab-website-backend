@@ -13,3 +13,4 @@ class AppointmentRecord(Base):
     time = Column(String(255))
     patient_name = Column(String(255))
     patient_email = Column(String(255))
+    patient_phone = Column(String(255))

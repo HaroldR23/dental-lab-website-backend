@@ -19,6 +19,7 @@ class SQLAppointmentRepository(AppointmentRepository):
                 time=appointment.time,
                 patient_name=appointment.patient_name,
                 patient_email=appointment.patient_email,
+                patient_phone=appointment.patient_phone,
             )
             self.session.add(appointment_to_create)
             id = str(appointment_to_create.id)
@@ -29,6 +30,7 @@ class SQLAppointmentRepository(AppointmentRepository):
                 time=appointment.time,
                 patient_name=appointment.patient_name,
                 patient_email=appointment.patient_email,
+                patient_phone=appointment.patient_phone,
             )
         except Exception:
             self.session.rollback()
@@ -46,6 +48,7 @@ class SQLAppointmentRepository(AppointmentRepository):
                     time=str(appointment.time),
                     patient_name=str(appointment.patient_name),
                     patient_email=str(appointment.patient_email),
+                    patient_phone=str(appointment.patient_phone),
                 )
                 for appointment in appointments
             ]
@@ -66,6 +69,7 @@ class SQLAppointmentRepository(AppointmentRepository):
                     time=str(appointment.time),
                     patient_name=str(appointment.patient_name),
                     patient_email=str(appointment.patient_email),
+                    patient_phone=str(appointment.patient_phone),
                 )
             return None
         except Exception:
