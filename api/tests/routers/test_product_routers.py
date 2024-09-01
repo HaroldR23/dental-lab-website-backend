@@ -3,6 +3,8 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
+from core.src.exceptions.business import (ProductAlreadyExistsException,
+                                          ProductBusinessException)
 from core.src.models.product import Product
 from core.src.use_cases.product import CreateProduct, GetAllProducts
 from core.src.use_cases.product.get_all.response import GetAllProductsResponse
@@ -19,10 +21,16 @@ def test_create_product_successfully(client: TestClient, mock_product_payload: d
 def test_create_product_should_raise_http_exception_when_something_went_wrong(
     client: TestClient, mock_product_payload: dict
 ):
-    with patch.object(CreateProduct, "__call__", side_effect=Exception("Error")):
+    with patch.object(
+        CreateProduct,
+        "__call__",
+        side_effect=ProductAlreadyExistsException(name="Product 1"),
+    ):
         response = client.post("/products", json=mock_product_payload)
-        assert response.status_code == 500
-        assert response.json() == {"detail": {"message": "Error"}}
+        assert response.status_code == 409
+        assert response.json() == {
+            "message": "The Product with the name 'Product 1' already exists."
+        }
 
 
 def test_get_all_products_should_return_an_empty_list_when_there_is_not_products(
@@ -60,7 +68,9 @@ def test_get_all_products_should_return_a_list_of_products(
 def test_get_all_products_should_raise_http_exception_when_something_went_wrong(
     client: TestClient,
 ):
-    with patch.object(GetAllProducts, "__call__", side_effect=Exception("Error")):
+    with patch.object(
+        GetAllProducts, "__call__", side_effect=ProductBusinessException("Error")
+    ):
         response = client.get("/products")
         assert response.status_code == 500
-        assert response.json() == {"detail": {"message": "Error"}}
+        assert response.json() == {"message": "Error"}
