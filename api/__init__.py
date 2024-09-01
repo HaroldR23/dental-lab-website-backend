@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from adapters.src.repositories.sql import SessionManager, SQLConnection
+from api.src.exceptions.handler_exceptions import register_exception_handlers
 from api.src.routers import appointment_router, index_router, product_router
 
 origins = os.environ.get("CORS_ORIGINS", "*").split(",")
@@ -29,4 +30,5 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(index_router)
+    register_exception_handlers(app)
     return app

@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException
 
 from api.src.dtos import Product
+from core.src.exceptions.business import (AlreadyExistsNameException,
+                                          BusinessException)
 from core.src.models import ProductPrice
 from core.src.use_cases.product import CreateProductRequest
 from factories.use_cases.product import (create_product_use_case,
@@ -25,8 +27,10 @@ async def create_product(product: Product):
         use_case = create_product_use_case()
         response_use_case = use_case(request=request)
         return response_use_case
-    except Exception as e:
-        raise HTTPException(status_code=500, detail={"message": str(e)})
+    except AlreadyExistsNameException as e:
+        raise e
+    except BusinessException as e:
+        raise e
 
 
 @product_router.get("/products", tags=["products"])
