@@ -1,5 +1,7 @@
 from adapters.src.exceptions.repository.appointment import \
     AppointmentRepositoryException
+from adapters.src.exceptions.repository.email_sender import \
+    EmailSenderRepositoryException
 from core.src.exceptions.business.appointment import (
     AppointmentAlreadyExistsException, AppointmentBusinessException)
 from core.src.models.appointment import Appointment
@@ -44,4 +46,7 @@ class CreateAppointment:
             )
 
         except AppointmentRepositoryException as e:
+            raise AppointmentBusinessException(str(e))
+
+        except EmailSenderRepositoryException as e:
             raise AppointmentBusinessException(str(e))
