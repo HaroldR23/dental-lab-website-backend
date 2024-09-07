@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "dlw_fastapi_lambda" {
-  function_name = "dlw-fastapi-function"
+  function_name = var.function_name
   role          = aws_iam_role.dlw_lambda_exec_role.arn
   package_type  = "Image"
   image_uri     = var.image_ecr_uri
@@ -12,7 +12,7 @@ resource "aws_lambda_function" "dlw_fastapi_lambda" {
 }
 
 resource "aws_iam_role" "dlw_lambda_exec_role" {
-  name = "lambda_exec_role"
+  name = var.lambda_exec_role
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

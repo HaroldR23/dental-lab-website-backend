@@ -15,3 +15,13 @@ variable "db_password" {
     type        = string
     sensitive   = true
 }
+
+variable "rds_tag_name" {
+    description = "The tag name for the RDS instance"
+    type        = string
+}
+
+variable "rds_security_group_name" {
+    description = "The name of the security group for the RDS instance"
+    type        = string
+}

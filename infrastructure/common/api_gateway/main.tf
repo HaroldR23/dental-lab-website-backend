@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "dlw_api_gateway" {
-  name        = "dlw-api"
+  name = var.api_name
   description = "API for DLW FastAPI application"
 }
 
@@ -29,6 +29,8 @@ resource "aws_api_gateway_integration" "dlw_api_integration" {
 resource "aws_api_gateway_deployment" "dlw_api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.dlw_api_gateway.id
   stage_name  = var.stage_name
+
+  depends_on = [ aws_api_gateway_integration.dlw_api_integration ]
 }
 
 resource "aws_lambda_permission" "dlw_api_gateway_permission" {

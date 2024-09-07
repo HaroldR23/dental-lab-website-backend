@@ -12,3 +12,8 @@ variable "lambda_name" {
     description = "Name of the Lambda function to integrate with the API Gateway"
     type = string
 }
+
+variable "api_name" {
+    description = "Name of the API Gateway"
+    type = string
+}
