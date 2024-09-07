@@ -58,9 +58,7 @@ jobs:
           REPOSITORY_NAME: dlw-${{ env.ENV }}-repository
         run: |
           docker build -t $REPOSITORY_NAME .
-          docker tag $REPOSITORY_NAME:$IMAGE_TAG $ECR_REGISTRY/$REPOSITORY_NAME:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$REPOSITORY_NAME:$IMAGE_TAG
-
+  
       - name: Print Repository and Tag
         run: echo "Repository--> $REPOSITORY_NAME, Tag--> $IMAGE_TAG, ECR Registry--> $ECR_REGISTRY"
 
