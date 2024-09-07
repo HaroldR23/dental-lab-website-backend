@@ -12,7 +12,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: us-east-1
   TERRAFORM_VERSION: 1.9.5
-  INFRA_DIRECTORY: ./infrastructure
+  INFRA_DIRECTORY: infrastructure
   ENV: prod
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Set up terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ${{ env.TERRAFORM_VERSION }}
 
@@ -40,7 +40,7 @@ jobs:
 
       - name: Terraform validate
         run: terraform validate
-        working-directory: ${{ env.INFRA_DIRECTORY }}
+        working-directory: ./${{ env.INFRA_DIRECTORY }}
 
       - name: Terraform workspace select
         run: terraform workspace select ${{ env.ENV }}
