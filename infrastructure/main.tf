@@ -24,7 +24,7 @@ module "ecr" {
 #########  LAMBDA  #########
 module "lambda" {
   source           = "./common/lambda"
-  image_ecr_uri    = "${module.ecr.ecr_resource.repository_url}:latest"
+  image_ecr_uri    = module.ecr.ecr_resource.repository_url
   function_name    = local.function_name
   lambda_exec_role = local.lambda_exec_role
   env_variables = {
