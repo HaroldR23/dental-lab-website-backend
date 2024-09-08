@@ -18,7 +18,6 @@ def register_exception_handlers(app: FastAPI):
 
     @app.exception_handler(BusinessException)
     async def general_exception_handler(request: Request, exc: BusinessException):
-        print("efectivamente se llama a esta excetiopn")
         return JSONResponse(
             status_code=500,
             content={"message": exc.args[0]},
@@ -28,7 +27,6 @@ def register_exception_handlers(app: FastAPI):
     async def date_already_exists_exception(
         request: Request, exc: DateAlreadyExistsException
     ):
-        print("efectivamente se llama a esta excetiopn")
         return JSONResponse(
             status_code=409,
             content={"message": exc.args[0]},
