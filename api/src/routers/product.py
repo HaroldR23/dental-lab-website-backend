@@ -47,7 +47,9 @@ async def get_all_products():
                     "prices": [
                         {"description": price.description, "value": price.value}
                         for price in product.prices
-                    ],
+                    ]
+                    if len(products) > 0
+                    else [],
                 }
                 for product in products
             ]
