@@ -56,7 +56,6 @@ class SQLProductRepository(ProductRepository):
     def get_all(self):
         try:
             products = self.session.query(ProductRecord).all()
-            print(products[0].prices)
             return [
                 Product(
                     id=str(product.id),
@@ -71,6 +70,5 @@ class SQLProductRepository(ProductRepository):
                 )
                 for product in products
             ]
-        except Exception as e:
-            print(e)
+        except Exception:
             raise ProductRepositoryException(method="get_all")
