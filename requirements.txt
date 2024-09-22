@@ -17,3 +17,5 @@ psycopg2-binary
 pytest
 pytest-asyncio
 pytest-mock
+pytest-cov
+coverage
