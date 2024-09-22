@@ -1,31 +1,38 @@
 name:  Dental Lab Web CI
 
 on: 
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+        - main
+  pull_request:
+    branches:
+        - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Set up Python 3.11
-              uses: actions/setup-python@v4
-              with:
-                  python-version: '3.11'
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+            python-version: '3.11'
 
-            - name: Create virtual environment
-              run: python -m venv .venv
+      - name: Create virtual environment
+        run: python -m venv .venv
 
-            - name: Install dependencies
-              run: |
-                  source .venv/bin/activate && make install_requirements
-                
-            - name: Run tests
-              run: |
-                  source .venv/bin/activate && make test
+      - name: Install dependencies
+        run: |
+            source .venv/bin/activate && make install_requirements
+          
+      - name: Run tests and coverage
+        run: |
+            source .venv/bin/activate && make test_coverage
+  
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          fail_ci_if_error: true

@@ -4,6 +4,7 @@ override AUTOFLAKE_FORMAT=echo Run autoflake...; autoflake \
 		--recursive \
 		--in-place . \
 		--exclude=__init__.py;
+COVERAGE_THRESHOLD = 95
 
 create_dev_env:
 	python3 -m venv .venv
@@ -24,3 +25,7 @@ format:
 	echo Run flake8...; flake8 .;
 	echo Run mypy...; mypy .;
 
+test_coverage:
+	coverage run -m pytest
+	coverage xml -o coverage.xml
+	coverage report -m --fail-under=$(COVERAGE_THRESHOLD)
